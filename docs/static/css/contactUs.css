@@ -23,24 +23,23 @@ header {
   
   nav {
     display: flex;
-    gap: 2px;
+    gap: 10px;
   }
   
   nav a {
-    /* color: var(--navbar-color); */
-    color: #fff;
-    font-size: 22px;
+    color: wheat;
+    font-size: 18px;
     text-decoration: none;
     padding: 5px 9px;
     font-weight: bold;
-    border: 2px solid transparent;
+    border: 0px solid transparent;
     transition: background 0.3s, color 0.3s, border 0.3s;
   }
   
   nav a:hover {
-    background: var(--navbar-hover-background);
+    background: grey;
     color: var(--navbar-hover-color);
-    border: 1px solid #fff;
+    border: 0px solid #fff;
     border-radius: 5px;
   }
 

@@ -31,38 +31,43 @@ header {
     align-items: center;
     justify-content: space-between;
     box-sizing: border-box;
-}
-
-.logo-link {
+    background: var(--navbar-background);
+    position: fixed; /* Fix the header */
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Ensure it stays on top */
+  }
+  
+  .logo-link {
     display: flex;
     align-items: center;
-}
-
-.logo {
+  }
+  
+  .logo {
     height: 35px;
-}
-
-nav {
+  }
+  
+  nav {
     display: flex;
-    gap: 2px;
-}
-
-nav a {
-    color: #fff;
-    font-size: 22px;
+    gap: 10px;
+  }
+  
+  nav a {
+    color: wheat;
+    font-size: 18px;
     text-decoration: none;
     padding: 5px 9px;
     font-weight: bold;
-    border: 2px solid transparent;
+    border: 0px solid transparent;
     transition: background 0.3s, color 0.3s, border 0.3s;
-}
-
-nav a:hover {
-    background: rgba(255, 255, 255, 0.8);
-    color: #000;
-    border: 2px solid #fff;
+  }
+  
+  nav a:hover {
+    background: grey;
+    color: var(--navbar-hover-color);
+    border: 0px solid #fff;
     border-radius: 5px;
-}
+  }
 
 .result-container {
     display: flex;

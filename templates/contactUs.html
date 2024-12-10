@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Form</title>
+    <link rel="stylesheet" href="/static/css/contactUs.css" />
+  </head>
+  <body>
+    <header>
+      <a href="/" class="logo-link">
+          <img src="/static/assets/logo1.png" alt="Logo" class="logo">
+      </a>
+      <nav>
+        <a href="/">Home</a>
+        <a href="#">Disease Info</a>
+        <a href="/aboutUs">About Us</a>
+        <a href="/login">Login</a>
+      </nav>
+    </header>
+    <div class="container">
+      <!-- Page Title -->
+      <h1>Get in Touch</h1>
+      <p>Fill up the form to get in touch with us.</p>
+      
+      <div class="contact-box">
+        <!-- Left Section: Contact Form -->
+        <div class="container-left">
+          <h3>Fill the Form*</h3>
+          <form id="contactForm" onsubmit="return validateForm()">
+            <!-- Input row for Name and Phone -->
+            <div class="input-row">
+              <div class="input-group">
+                <label for="name">Name*</label>
+                <input
+                  type="text"
+                  id="name"
+                  placeholder="Enter your Name"
+                  required
+                />
+              </div>
+              <div class="input-group">
+                <label for="phone">Phone*</label>
+                <input
+                  type="text"
+                  id="phone"
+                  placeholder="+91 1234567890"
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- Input row for Email and Subject -->
+            <div class="input-row">
+              <div class="input-group">
+                <label for="email">Email*</label>
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="youremail@gmail.com"
+                  required
+                />
+              </div>
+              <div class="input-group">
+                <label for="subject">Subject</label>
+                <input
+                  type="text"
+                  id="subject"
+                  placeholder="Inquiry"
+                />
+              </div>
+            </div>
+
+            <!-- Textarea for Message -->
+            <label for="message">Message*</label>
+            <textarea
+              rows="10"
+              id="message"
+              placeholder="Enter your Message"
+              required
+            ></textarea>
+            
+            <!-- Submit Button -->
+            <button type="submit">SEND MESSAGE</button>
+          </form>
+        </div>
+
+        <!-- Right Section: Contact Information -->
+        <div class="container-right">
+          <h3>Reach Us</h3>
+          <table>
+            <tr>
+              <td>Email:</td>
+              <td>adi3042@gmail.com</td>
+            </tr>
+            <tr>
+              <td>Phone:</td>
+              <td>+91 8529637410</td>
+            </tr>
+            <tr>
+              <td>Address:</td>
+              <td>
+                United College of Technology<br />
+                Naini, Prayagraj<br />
+                Prayagraj - 211008, India
+              </td>
+            </tr>
+          </table>
+
+          <!-- Map Section -->
+          <div class="map">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3605.8414935652186!2d81.90861817516858!3d25.3430993776174!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3985497f856b1d35%3A0xf727c4fc418f7b17!2sUnited%20College%20of%20Engineering%20and%20Research!5e0!3m2!1sen!2sin!4v1732241326444!5m2!1sen!2sin"
+              width="800"
+              height="275"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript File -->
+    <script src="/static/javascript/contactUs.js"></script>
+  </body>
+</html>

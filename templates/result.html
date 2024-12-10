@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="/static/css/style.css" />
+  </head>
+  <body>
+    <header>
+      <a href="/" class="logo-link">
+        <img src="/static/assets/logo1.png" alt="Logo" class="logo" />
+      </a>
+      <nav>
+        <a href="/">Home</a>
+        <a href="#">Contact Us</a>
+        <a href="#">About Us</a>
+        <a href="#">Login</a>
+        <a href="#">Signup</a>
+      </nav>
+    </header>
+    <div id="result-container" class="result-container">
+      <div class="prediction-result">
+        <h2>Prediction Result</h2>
+        <img
+          src="data:image/png;base64,{{ img_data }}"
+          alt="Uploaded Image"
+          class="uploaded-image"
+        />
+        <p class="result-text">Class: {{ class_name }}</p>
+        <p class="result-text">Confidence: {{ confidence }}%</p>
+        <a href="/" class="button">Upload another Image</a>
+      </div>
+      <div class="description">
+        <h2>Description</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum
+          cupiditate dolore maxime placeat odit, quo dolorem ipsam aliquid
+          recusandae aliquam laborum perferendis nobis commodi ut? Ut,
+          doloremque voluptatem inventore omnis odio eligendi voluptates dolor
+          ipsa pariatur dicta quasi harum quisquam animi molestiae porro quis
+          adipisci sed nobis earum quia. Et, est sunt enim voluptate molestiae,
+          quia consectetur repellat ut saepe in minus ipsa iure quisquam optio.
+          Ullam magnam et ipsa quas? Quidem accusantium minima provident quos
+          voluptates repellendus, dicta fugiat unde temporibus veniam repellat,
+          asperiores, impedit tempora nostrum? Quae minus porro perspiciatis
+          facere blanditiis asperiores amet ipsam doloremque numquam, eligendi
+          ab dicta. Debitis hic eum amet ipsa deserunt magnam tempora ratione
+          maiores adipisci in laboriosam voluptatem aut cum, animi minima at et
+          tempore quaerat voluptate quae laborum? Soluta delectus deserunt fuga
+          minus. Officia, dolor praesentium rem nemo numquam deleniti itaque
+          saepe, quas qui ea odio optio nihil officiis expedita suscipit quidem
+          illum ullam labore at sit cupiditate. Optio, animi laudantium.
+          Similique distinctio saepe, eum est voluptates, cupiditate, deleniti
+          expedita a beatae ex accusantium! Animi nihil repudiandae ea vero
+          obcaecati, quisquam rerum expedita minima, fugiat, doloribus
+          asperiores distinctio amet ipsum saepe officiis assumenda?
+          Consequuntur minus voluptate blanditiis quasi voluptatem dignissimos
+          accusantium asperiores cum. Pariatur explicabo reprehenderit, est
+          omnis fugit voluptatibus qui aliquam, ad, sunt id nisi magni nulla.
+          Architecto in praesentium, id laborum delectus laboriosam,
+          exercitationem unde deleniti voluptatibus quos ab neque? Similique
+          facilis, provident doloremque soluta excepturi, totam aperiam
+          molestiae consequatur ipsum cupiditate laudantium itaque alias illum
+          voluptatum qui recusandae eligendi tenetur ut voluptates iusto quas.
+          Obcaecati et quasi quidem placeat cum ipsam ratione optio numquam
+          doloremque sequi omnis a cumque, consectetur voluptates velit
+          reprehenderit recusandae harum assumenda odio. Eveniet obcaecati fuga
+          dolorem fugiat molestiae consectetur debitis, optio soluta, ipsa
+          tempore neque cum quidem eos ratione libero expedita sint modi ex
+          voluptates iure placeat, maxime vel voluptatum excepturi? Ex qui non
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

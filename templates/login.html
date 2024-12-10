@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign In & Sign Up</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/login.css" />
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <a href="/" class="logo-link">
+            <img src="/static/assets/logo1.png" alt="Logo" class="logo" />
+        </a>
+        <nav>
+            <a href="/">Home</a>
+            <a href="#">Disease Info</a>
+            <a href="/contactUs">Contact Us</a>
+            <a href="/aboutUs">About Us</a>
+        </nav>
+        <div class="hamburger">
+          <i class="fas fa-bars"></i>
+      </div>
+    </header>
+    <div class="container">
+        <div class="forms-container">
+            <div class="signin-signup">
+                <form id="loginForm" class="sign-in-form">
+                    <h2 class="title">Sign In</h2>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" placeholder="Username" required />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="Password" required />
+                    </div>
+                    <input type="submit" value="Login" class="btn solid" />
+                    <p class="social-text">Or Sign in with social platforms</p>
+                    <div class="social-media">
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-google"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </form>
+                <form action="/register" method="post" class="sign-up-form">
+                  <h2 class="title">Sign Up</h2>
+                  <div class="form-grid">
+                      <div class="form-group">
+                          <i class="fas fa-user"></i>
+                          <input type="text" id="firstname" name="firstname" placeholder="First Name" required />
+                      </div>
+                      <div class="form-group">
+                          <i class="fas fa-user"></i>
+                          <input type="text" id="lastname" name="lastname" placeholder="Last Name" />
+                      </div>
+                      <div class="form-group">
+                          <i class="fas fa-user"></i>
+                          <input type="text" id="username" name="username" placeholder="Username" required />
+                      </div>
+                      <div class="form-group">
+                          <i class="fas fa-envelope"></i>
+                          <input type="email" id="email" name="email" placeholder="Email" required />
+                      </div>
+                      <div class="form-group">
+                          <i class="fas fa-lock"></i>
+                          <input type="password" id="password" name="password" placeholder="Password" required />
+                      </div>
+                      <div class="form-group">
+                          <i class="fas fa-lock"></i>
+                          <input type="password" id="confirmpassword" name="confirmpassword" placeholder="Confirm Password" required />
+                      </div>
+                      <div class="form-group full-width">
+                          <i class="fas fa-venus-mars"></i>
+                          <select id="gender" name="gender" required>
+                              <option value="" disabled selected>Select Gender</option>
+                              <option value="male">Male</option>
+                              <option value="female">Female</option>
+                          </select>
+                      </div>
+                      <div class="form-group full-width">
+                          <i class="fas fa-address-card"></i>
+                          <textarea id="address" name="address" placeholder="Address" required></textarea>
+                      </div>
+                      <div class="form-group">
+                          <i class="fas fa-phone"></i>
+                          <input type="tel" id="mobileno" name="mobileno" placeholder="Mobile No" required />
+                      </div>
+                      <div class="form-group">
+                          <i class="fas fa-globe"></i>
+                          <select id="countrycode" name="countrycode" required>
+                              <option value="+91" selected>India (+91)</option>
+                              <option value="+1">United States (+1)</option>
+                              <option value="+44">United Kingdom (+44)</option>
+                          </select>
+                      </div>
+                  </div>
+                  <input type="submit" value="Register" class="btn solid" />
+              </form>              
+            </div>
+        </div>
+        <div class="panels-container">
+            <div class="panel left-panel">
+                <div class="content">
+                    <h3>New here?</h3>
+                    <p>Lorem ipsum dolor sit amet consect etur adipisicing elit. Optio minus natus est.</p>
+                    <button class="btn transparent" id="sign-up-btn">Sign Up</button>
+                </div>
+                <img src="/static/assets/log.svg" class="image" alt="" />
+            </div>
+            <div class="panel right-panel">
+                <div class="content">
+                    <h3>One of us?</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio minus natus est.</p>
+                    <button class="btn transparent" id="sign-in-btn">Sign In</button>
+                </div>
+                <img src="/static/assets/register.svg" class="image" alt="" />
+            </div>
+        </div>
+    </div>
+    <script src="/static/javascript/login.js"></script>
+</body>
+</html>

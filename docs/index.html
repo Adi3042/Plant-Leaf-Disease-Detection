@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Leaf Disease Detection</title>
+    <link rel="stylesheet" href="/docs/static/css/style.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo-link">
+            <img src="/docs/static/assets/logo1.png" alt="Logo" class="logo">
+        </a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="#">Disease Info</a>
+            <a href="/templates/contactUs.html">Contact Us</a>
+            <a href="/templates/aboutus.html">About Us</a>
+            <a href="/templates/login.html">Login</a>
+        </nav>
+    </header>
+
+    <!-- Drag and Drop Section -->
+    <div id="upload-container" class="upload-container">
+        <h2>🌿 Drag & Drop Image Here 🌿</h2>
+        <form id="upload-form" action="/" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" id="file" accept="image/*" required>
+            <label for="file" id="file-label">Choose a file</label>
+            <input type="submit" value="Upload">
+        </form>
+        <p id="file-selected" style="display: none; color: green;">Image selected successfully!</p>
+    </div>
+
+    <script>
+        // Event listener for file input change
+        document.getElementById('file').addEventListener('change', function () {
+            const fileLabel = document.getElementById('file-label');
+            const fileSelected = document.getElementById('file-selected');
+    
+            // Update the file name display if a file is selected
+            if (this.files.length > 0) {
+                fileLabel.textContent = 'File selected: ' + this.files[0].name;
+                fileSelected.style.display = 'block';
+            } else {
+                fileLabel.textContent = 'Choose a file';
+                fileSelected.style.display = 'none';
+            }
+        });
+    
+        // Event listener for form submission
+        document.getElementById('upload-form').addEventListener('submit', function (event) {
+            const fileInput = document.getElementById('file');
+    
+            // Check if no file is selected
+            if (fileInput.files.length === 0) {
+                event.preventDefault(); // Prevent the form from submitting
+                alert('Please upload or drag and drop an image first.'); // Show alert
+            }
+        });
+    
+        // Drag-and-drop functionality
+        const uploadContainer = document.getElementById('upload-container');
+        const fileInput = document.getElementById('file');
+    
+        uploadContainer.addEventListener('dragover', (event) => {
+            event.preventDefault();
+            uploadContainer.style.background = 'rgba(0, 128, 0, 0.1)';
+        });
+    
+        uploadContainer.addEventListener('dragleave', () => {
+            uploadContainer.style.background = 'linear-gradient(135deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%)';
+        });
+    
+        uploadContainer.addEventListener('drop', (event) => {
+            event.preventDefault();
+            uploadContainer.style.background = 'linear-gradient(135deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%)';
+    
+            // Handle files dropped into the upload container
+            if (event.dataTransfer.files.length > 0) {
+                fileInput.files = event.dataTransfer.files;
+                const fileLabel = document.getElementById('file-label');
+                const fileSelected = document.getElementById('file-selected');
+                fileLabel.textContent = 'File selected: ' + event.dataTransfer.files[0].name;
+                fileSelected.style.display = 'block';
+            }
+        });
+    </script>
+    
+</body>
+</html>

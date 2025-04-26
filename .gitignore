@@ -164,5 +164,4 @@ cython_debug/
 # Ingore directory
 saved_models\Disease_Classifier.keras
 saved_models\Disease_Classifier.h5
-Dataset/
-archive.zip
+with_augmentation\

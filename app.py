@@ -1,47 +1,48 @@
+import os
 import numpy as np
 from io import BytesIO
 from PIL import Image
 import tensorflow as tf
 import base64
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 from register import handle_register
 import re
-from flask import jsonify
 from pymongo import MongoClient
 from pymongo.server_api import ServerApi
+from dotenv import load_dotenv
 
+# Load environment variables
+load_dotenv()
 
 app = Flask(__name__)
 
 # MongoDB Connection
-def connect_to_mongodb(uri):
+def connect_to_mongodb():
+    """Connect to MongoDB using the URI from environment variables."""
+    MONGO_URI = os.getenv("MONGO_URI")
+    if not MONGO_URI:
+        raise ValueError("MONGO_URI is not set in environment variables.")
     try:
-        client = MongoClient(uri, server_api=ServerApi('1'))
-        print("Connected to MongoDB successfully!")
+        client = MongoClient(MONGO_URI, server_api=ServerApi('1'))
+        client.admin.command('ping')  # Send a ping to confirm a successful connection
+        print("Pinged your deployment. Successfully connected to MongoDB!")
         return client
     except Exception as e:
-        print(f"An error occurred: {e}")
+        print(f"An error occurred while connecting to MongoDB: {e}")
         return None
 
-# MongoDB URI
-MONGO_URI = "mongodb+srv://adi:plantdisease@cluster0.1wwnm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-
 # Connect to MongoDB
-client = connect_to_mongodb(MONGO_URI)
-if client:
-    try:
-        client.admin.command('ping')
-        print("Pinged your deployment. Successfully connected to MongoDB!")
-    except Exception as e:
-        print(e)
+client = connect_to_mongodb()
+if not client:
+    raise ConnectionError("Failed to connect to MongoDB.")
 
 # Select Database and Collection
 db = client.adi  # Replace with your database name
 collection = db.Signed_User  # Replace with your collection name
 
-
 # Load the TFLite model and allocate tensors
 def load_tflite_model(model_path):
+    """Load the TensorFlow Lite model."""
     interpreter = tf.lite.Interpreter(model_path=model_path)
     interpreter.allocate_tensors()
     return interpreter
@@ -49,6 +50,7 @@ def load_tflite_model(model_path):
 # Load the TFLite model
 interpreter = load_tflite_model('saved_models/Disease_Classifier.tflite')
 
+# Class names for predictions
 class_names = [
     'Apple Black Rot', 'Apple Scab', 'Blueberry Healthy', 'Cedar Apple', 'Cherry Healthy', 'Cherry Powdery Mildew',
     'Corn (maize) Cercospora leaf spot', 'Corn (maize) Healthy', 'Corn (maize) Northern Leaf Blight', 'Corn (maize) Rust',
@@ -63,6 +65,7 @@ class_names = [
 ]
 
 def predict(interpreter, img):
+    """Predict the class of the given image using the TFLite model."""
     input_details = interpreter.get_input_details()
     output_details = interpreter.get_output_details()
 
@@ -79,6 +82,7 @@ def predict(interpreter, img):
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
+    """Handle file uploads and predictions."""
     if request.method == 'POST':
         file = request.files['file']
         if file:
@@ -99,6 +103,7 @@ def upload_file():
 
 # Helper Function: Validate Form Fields
 def validate_signup_form(username, password, confirmpassword, mobileno, countrycode):
+    """Validate the signup form fields."""
     print("-"*20, "Validating Signup Form Fields", "-"*20)
     # Username: At least 4 characters
     if len(username) < 4:
@@ -125,18 +130,22 @@ def validate_signup_form(username, password, confirmpassword, mobileno, countryc
 
 @app.route('/contactUs')
 def contact_us():
+    """Render the Contact Us page."""
     return render_template('/contactUs.html')
 
 @app.route('/aboutUs')
 def about_us():
+    """Render the About Us page."""
     return render_template('aboutus.html')
 
 @app.route('/login')
 def login():
+    """Render the Login page."""
     return render_template('login.html')
 
 @app.route('/login', methods=['POST'])
 def login_val():
+    """Validate login credentials."""
     try:
         print("-"*20, "Logging In User", "-"*20)
         # Ensure the content type is JSON
@@ -160,12 +169,10 @@ def login_val():
         print(f"An error occurred: {e}")
         return jsonify({"status": "error", "message": "Internal Server Error"}), 500
 
-
-
 @app.route("/register.py", methods=["POST"])
 def register():
+    """Handle user registration."""
     return handle_register(request, collection)
-
 
 if __name__ == '__main__':
     app.run(debug=True)
